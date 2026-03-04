@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>print</title>
+</head>
+<style>
+    /* 屏幕样式 */
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    nav,
+    footer {
+        display: block;
+    }
+</style>
+
+<body>
+
+
+    <nav class="print-hide">
+        导航
+    </nav>
+    <!-- 简历内容 -->
+    <div class="resume-container">
+        <div class="print-date" data-print-date="2026-02-27">
+
+        </div>
+        <div class="resume-section">
+            <h1>个人信息</h1>
+            <p>联系我: <a href="mailto:example@email.com">发送邮件</a></p>
+            <p>个人网站: <a href="https://example.com">访问网站</a></p>
+        </div>
+
+        <!-- 分页处 -->
+        <div class="page-break">
+            分页
+        </div>
+
+        <div class="resume-section">
+            <h1>工作经历</h1>
+            <div>
+                没有工作经历
+
+            </div>
+        </div>
+
+
+        <!-- 页脚（打印时隐藏） -->
+        <footer class="print-hide">...</footer>
+
+
+    </div>
+
+
+    <style>
+        @media print {
+
+            /* ============================
+                    1. 隐藏非打印元素
+                ============================ */
+            /* 隐藏导航、页脚、侧边栏等无关内容 */
+            nav,
+            footer,
+            .sidebar,
+            .header,
+            .navigation,
+            .print-hide {
+                display: none !important;
+            }
+
+            /* ============================
+                    2. 链接处理
+                ============================ */
+            /* 确保链接可点击区域完整显示 */
+            a {
+                color: #000 !important;
+                text-decoration: underline !important;
+                background: transparent !important;
+            }
+
+            /* 在所有链接后显示真实URL（仅限外部链接） */
+            a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"]):after {
+                content: " (" attr(href) ")";
+                font-size: 0.9em;
+                font-weight: normal;
+                color: #666;
+                word-break: break-all;
+            }
+
+            /* 对于邮箱链接 */
+            a[href^="mailto:"]:after {
+                content: " (" attr(href) ")";
+            }
+
+            /* 对于锚点链接，不显示URL */
+            a[href^="#"]:after {
+                content: "" !important;
+            }
+
+            /* ============================
+                    3. 分页控制
+                ============================ */
+            /* 避免在段落中间分页 */
+            p,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                /* 避免在标题中间分页 */
+                page-break-inside: avoid;
+                /* 避免在标题后面分页 */
+                page-break-after: avoid;
+            }
+
+            /* 段落内避免分页 */
+            p {
+                orphans: 3;
+                /* 段落在页面底部最少保留3行 */
+                widows: 3;
+                /* 段落在页面顶部最少保留3行 */
+            }
+
+            /* 列表项保持完整 */
+            li {
+                page-break-inside: avoid;
+            }
+
+            /* 表格尽量不分页，如必须分页则重复表头 */
+            table {
+                page-break-inside: avoid;
+            }
+
+            thead {
+                display: table-header-group;
+                /* 每页都显示表头 */
+            }
+
+            /* 章节标题前强制分页 */
+            .chapter,
+            .resume-section {
+                page-break-before: always;
+            }
+
+            /* 确保每个主要部分从新页面开始 */
+            .resume-section:first-child {
+                page-break-before: auto;
+            }
+
+            /* ============================
+                4. 节省墨水（灰度优化）
+            ============================ */
+            /* 转换为灰度打印 */
+            * {
+                color: #000 !important;
+                background-color: transparent !important;
+                background-image: none !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* 移除背景图、阴影、渐变等耗墨效果 */
+            body {
+                -webkit-print-color-adjust: economy;
+                print-color-adjust: economy;
+            }
+
+            /* 图片和图表转换为灰度 */
+            img,
+            svg,
+            canvas,
+            .chart,
+            .graph {
+                filter: grayscale(100%) !important;
+                -webkit-filter: grayscale(100%) !important;
+            }
+
+            /* 减少边框墨水使用 */
+            * {
+                border-color: #ddd !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+
+            /* 设置简洁边框 */
+            table,
+            th,
+            td {
+                border: 1px solid #ddd !important;
+            }
+
+            /* ============================
+     5. 布局优化
+  ============================ */
+            /* 确保容器宽度为100% */
+            body,
+            .resume-container,
+            .content {
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 20px !important;
+                max-width: none !important;
+                float: none !important;
+            }
+
+            /* 设置合适的字体大小和行高 */
+            body {
+                font-family: "Times New Roman", Times, serif !important;
+                font-size: 12pt !important;
+                line-height: 1.5 !important;
+            }
+
+            /* 标题样式调整 */
+            h1 {
+                font-size: 18pt !important;
+            }
+
+            h2 {
+                font-size: 16pt !important;
+            }
+
+            h3 {
+                font-size: 14pt !important;
+            }
+
+            h4 {
+                font-size: 12pt !important;
+            }
+
+
+            /* 页边距设置（标准A4） */
+            @page {
+                size: A4 portrait;
+                margin: 2cm 1.5cm;
+
+                /* 添加页眉页脚（可选） */
+                @top-left {
+                    content: "个人简历";
+                    font-size: 10pt;
+                    color: #666;
+                }
+
+                @bottom-right {
+                    content: "第 " counter(page) " 页，共 " counter(pages) " 页";
+                    font-size: 10pt;
+                    color: #666;
+                }
+            }
+
+            /* 第一页特殊样式 */
+            @page :first {
+                margin-top: 3cm;
+                /* 第一页顶部留更多空白 */
+
+                @top-left {
+                    content: "";
+                    /* 第一页不显示页眉 */
+                }
+            }
+
+            /* ============================
+                6. 实用类辅助
+            ============================ */
+            /* 仅在打印时显示的元素 */
+            .print-only {
+                display: block !important;
+            }
+
+            /* 打印日期 */
+            .print-date:after {
+                content: "打印日期: " attr(data-print-date);
+                margin-right: 50px;
+                display: block;
+                text-align: right;
+                font-size: 10pt;
+                color: #666;
+                margin-bottom: 20px;
+            }
+
+            /* 二维码/条形码打印优化 */
+            .qrcode {
+                width: 3cm !important;
+                height: 3cm !important;
+                opacity: 0.9 !important;
+            }
+
+            /* ============================
+                7. 性能优化
+            ============================ */
+            /* 避免背景图片打印 */
+            * {
+                background-image: none !important;
+            }
+
+            /* 移除动画和过渡 */
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            /* 优化字体显示 */
+            body {
+                font-smooth: always;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            /* ============================
+                    8. 浏览器兼容性增强
+            ============================ */
+            /* 针对旧版浏览器的回退方案 */
+            @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+
+                /* Safari 特定优化 */
+                body {
+                    -webkit-print-color-adjust: exact;
+                }
+            }
+
+            /* 确保分页符可见性 */
+            .page-break {
+                page-break-before: always;
+                clear: both;
+            }
+
+            /* 避免小元素单独在一页 */
+            .avoid-break {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+
+    <script>
+        // 自动添加打印日期
+        window.addEventListener('beforeprint', () => {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('zh-CN');
+            const dateElement = document.querySelector('.print-date');
+            if (dateElement) {
+                dateElement.setAttribute('data-print-date', dateStr);
+            }
+        });
+
+        // 打印前优化图片
+        window.addEventListener('beforeprint', () => {
+            document.querySelectorAll('img').forEach(img => {
+                if (img.dataset.printSrc) {
+                    img.src = img.dataset.printSrc; // 使用打印专用图片
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

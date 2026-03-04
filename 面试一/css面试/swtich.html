@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纯css开关</title>
+</head>
+
+<body>
+    <div class="swtich-container">
+        <input type="checkbox" id="switch" class="switch-input">
+        <label for="switch" class="switch-label"></label>
+    </div>
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            background: linear-gradient(45deg, #5900ff, #00ff99);
+            height: 100vh;
+        }
+
+        .swtich-container {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch-input {
+            display: none;
+        }
+
+        .switch-label {
+            display: inline-block;
+            position: relative;
+            height: 34px;
+            width: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* 开关轨道 */
+        .switch-label::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            border-radius: 50px;
+            background-color: #ccc;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 开关滑块 */
+        .switch-label::after {
+            content: "";
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            left: 2px;
+            top: 2px;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+        .switch-input:checked+.switch-label::before {
+            background-color: #00ff99;
+        }
+
+        .switch-input:checked+.switch-label::after {
+            left: calc(100% - 32px);
+            transform: scale(1.05);
+        }
+
+        .switch-label:active::after {
+            width: 36px;
+        }
+
+        .switch-input:checked+.switch-label:active::after {
+            width: 36px;
+            left: calc(100% - 40px);
+        }
+
+        .switch-input:disabled+.switch-label {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .switch-input:disabled+.switch-label::before {
+            background-color: #ccc;
+            background: linear-gradient();
+        }
+
+
+
+        @media print {
+
+            nav,
+            footer {
+                display: none;
+            }
+
+            a[href^="mailto"]::after {
+                content: "(" attr(href) + ")"
+            }
+
+            a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::after {
+                font-size: 0.9em;
+                font-weight: normal;
+                content: "(" attr(href) + ")";
+                color: #666;
+                word-break: break-all;
+            }
+
+            a[href^="#"]::after {
+                content: "" !important;
+            }
+
+            .page-break {
+                page-break-inside: always;
+                clear: both;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                /* 避免在标题中间分页 */
+                page-break-inside: avoid;
+                /* 避免在标题后面分页 */
+                page-break-after: avoid;
+            }
+
+            p {
+                orphans: 3;
+                /* 段落在页面底部最少保留3行 */
+                widows: 3;
+                /* 段落在页面顶部最少保留3行 */
+            }
+
+            /* 转换为灰度打印 */
+            * {
+                color: #333 !important;
+                background-color: transparent !important;
+                background-image: none !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</body>
+
+</html>

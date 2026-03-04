@@ -1,0 +1,54 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm --filter './apps/*' dev",
+    "build": "pnpm --filter './apps/*' build",
+    "clean": "pnpm --filter './apps/*' clean && pnpm clean:root",
+    "clean:root": "rm -rf node_modules pnpm-lock.yaml",
+    "install:all": "pnpm install",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,vue,css,scss,html,json,md}\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "stylelint": "stylelint --fix \"**/*.{css,scss,sass,less}\"",
+    "vue3:dev": "pnpm --filter vue3-webpack-web dev",
+    "vue3:build": "pnpm --filter vue3-webpack-web build",
+    "ts:dev": "pnpm --filter ts-webpack-web dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^20.4.1",
+    "@commitlint/config-conventional": "^20.4.1",
+    "@types/node": "^25.2.1",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "cspell": "^9.6.4",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^10.7.0",
+    "husky": "^9.1.7",
+    "lerna": "^9.0.3",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1",
+    "stylelint": "^17.1.1",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@demo/react19-webpack-web": "workspace:*",
+    "@demo/vue3-vite-web": "workspace:*",
+    "@demo/vue3-webpack-web": "workspace:*"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
+}

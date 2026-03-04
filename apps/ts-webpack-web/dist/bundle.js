@@ -1,0 +1,1 @@
+(()=>{"use strict";new class{_value;constructor(e){this._value=e}get value(){return console.log("Ref: get value"),this._value}set value(e){console.log("Ref: set value"),this._value=e}}(1),document.getElementById("app").innerHTML="hello webpack",console.log("hello webpack")})();

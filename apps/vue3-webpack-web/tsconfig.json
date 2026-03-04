@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "strict": true, // 开启严格模式，包括类型检查和其他严格选项
+    "jsx": "preserve", // 保留 JSX 语法，不进行转换
+    "sourceMap": true, // 生成 source map 文件
+    "resolveJsonModule": true, // 允许导入 JSON 文件
+    "isolatedModules": true, // 每个文件作为单独的模块，不进行合并
+    "esModuleInterop": true, // 允许使用 CommonJS 模块的默认导出
+    "lib": ["esnext", "dom"],
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "/*": ["./*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules"]
+}

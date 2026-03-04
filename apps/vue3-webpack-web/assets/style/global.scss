@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+}
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+.flex-between {
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-around {
+  justify-content: space-around;
+  align-items: center;
+}

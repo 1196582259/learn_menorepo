@@ -1,0 +1,2 @@
+. "$(dirname -- "$0")/_/husky.sh"
+pnpm exec commitlint --edit $1' > .husky/commit-msg

@@ -1,0 +1,25 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
+  "rules": {
+    "selector-class-pattern": null,
+    "selector-id-pattern": null,
+    "no-descending-specificity": null,
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "use",
+          "forward",
+          "mixin",
+          "include",
+          "extend",
+          "each",
+          "for",
+          "if",
+          "else"
+        ]
+      }
+    ]
+  },
+  "ignoreFiles": ["dist/**", "build/**", "node_modules/**"]
+}
