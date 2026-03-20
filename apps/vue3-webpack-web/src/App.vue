@@ -43,6 +43,11 @@ const data = [
         key: 'image-load',
         to: '/Questions/ImageLoad',
       },
+      {
+        label: 'CORS',
+        key: 'cors',
+        to: '/Questions/CorsPage',
+      },
     ],
   },
   {
