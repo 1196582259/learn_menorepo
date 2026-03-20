@@ -16,7 +16,8 @@
     "stylelint": "stylelint --fix \"**/*.{css,scss,sass,less}\"",
     "vue3:dev": "pnpm --filter vue3-webpack-web dev",
     "vue3:build": "pnpm --filter vue3-webpack-web build",
-    "ts:dev": "pnpm --filter ts-webpack-web dev"
+    "ts:dev": "pnpm --filter ts-webpack-web dev",
+    "nest:dev": "pnpm --filter nest-server start:dev"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.4.1",
     "@commitlint/config-conventional": "^20.4.1",
+    "@nestjs/cli": "^11.0.16",
     "@types/node": "^25.2.1",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.54.0",
@@ -32,6 +34,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-vue": "^10.7.0",
+    "globals": "^17.4.0",
     "husky": "^9.1.7",
     "lerna": "^9.0.3",
     "lint-staged": "^16.2.7",

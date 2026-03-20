@@ -28,19 +28,34 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
 }
 .classic-header {
   background-color: #f5f5f5;
   padding: 20px;
+  flex-shrink: 0;
 }
 .classic-content {
   flex: 1;
   padding: 20px;
   order: 2;
+  /* overflow-y: auto; */
+  max-height: 100%;
+  overflow: hidden;
 }
 .classic-footer {
   background-color: #f5f5f5;
   padding: 20px;
+  flex-shrink: 0;
+}
+.container {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  align-items: flex-start;
+}
+.sidebar {
+  flex-shrink: 0;
 }
 </style>
 <script setup></script>

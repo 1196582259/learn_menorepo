@@ -29,7 +29,7 @@ export default (env, argv) => {
       publicPath: argv.mode === 'production' ? './' : '/',
       clean: true,
     },
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     devServer: {
       static: {
         directory: path.join(__dirname, 'assets'),
@@ -42,6 +42,9 @@ export default (env, argv) => {
         index: '/', // 指定 index 文件路径
         disableDotRule: false,
       },
+    },
+    cache: {
+      type: 'memory',
     },
     module: {
       rules: [
@@ -75,6 +78,15 @@ export default (env, argv) => {
         {
           test: /\.css$/,
           use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(png|jpe?g|gif|webp|svg)$/i,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[hash:8][ext]',
+            },
+          },
         },
       ],
     },

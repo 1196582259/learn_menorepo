@@ -1,11 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useLayoutStore } from '@/store/layout'
 
-const layoutContext = require.context('@/layouts', true, /\.vue$/, 'lazy')
-const layoutFiles = layoutContext.keys()
-
-const pageContext = require.context('@/pages', true, /\.vue$/)
-const routes = pageContext.keys().map((item: any) => {
+const pageContext = require.context('@/pages', true, /\.vue$/, 'lazy')
+const routes = pageContext.keys().map((item: string) => {
   const name = item.replace(/^\.\/(.*)\.\w+$/, '$1').replace(/^\/+/, '')
   const filePath = item.replace(/^\.\/(.*)\.\w+$/, '$1').replace(/^\/+/, '') + '.vue'
   return {
